@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak Kuswhaha | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+<nav class="nav-sidebar">
+    <div class="logo">Deepak Kuswhaha</div>
+    <div class="nav-links">
+        <ul> 
+        <li><a href="#">Home</a></li>  
+        <li><a href="#About">About</a></li>    
+        <li><a href="#Skills">Skills</a></li>    
+        <li><a href="#Experience">Experience</a></li>    
+        <li><a href="#Projects">Projects</a></li>    
+        <li><a href="#ContactUs">ContactUs</a></li>
+        
+    </ul>
+    </div>
+</nav>
+
+    <section class="frontpage">
+        <div class="section-left">
+            Hi,I'm 
+            <div>
+                 <span class="title">Deepak Kushwaha</span>
+            </div>& I'm 
+            <div>
+                <span id="element"></span>
+            </div>
+            <div class="btn-container">
+                <button class="btn-resume" onclick="window.open('./assets/Resume1.pdf')">Download CV</button>
+            </div>
+            <div class="social-links">
+                <img src="./assets/facebook.png" class="icon" alt="My Facebook profile" onclick="location.href='https://'">
+                <img src="./assets/github.png"class="icon" alt="My Github profile" onclick="location.href='https://'">
+                <img src="./assets/linkedin.png"class="icon" alt="My Linkedin profile" onclick="location.href='https://'">
+                <img src="./assets/instagram.png"class="icon" alt="My Instagram profile" onclick="location.href='https://'">
+            </div>
+        </div>
+        <div class="section-right">
+            <img src="./assets/bg1.png"/>
+        </div>
+    </section>
+    </header>
+
+<main>
+    <section id="About">
+        <h3>Get to Know More</h3>
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="about-img">
+                <img src="./assets/p3.png" alt="Profile Image">
+            </div>
+            <div class="about-details-container">
+                <div class="about-details">
+                    <p>Hi, I'm a passionate <strong>Web developer and Designer</strong> with a focus on creating clean, user-friendly, and responsive websites. I love turning ideas into reality through code and design.</p>
+                </div>
+                <div class="personal-info">
+                    <table>
+                        <tr class="personal-head">
+                             <th colspan="2"> Personal Information</th>
+                        </tr>
+                        <tr>
+                            <td class="personal-th">Name:</td>
+                            <td class="personal-tr">Deepak Kushwaha</td>
+                        </tr>
+                        <tr>
+                            <td class="personal-th">DOB:</td>
+                            <td class="personal-tr">1/11/1999</td>
+                        </tr>
+                        <tr>
+                            <td class="personal-th">Address:</td>
+                            <td class="personal-tr">1-17 Bacuchar nagar,Alwa Naka,Manjalpur,Vadodara,390011</td>
+                        </tr>
+                        <tr>
+                            <td class="personal-th">School:</td>
+                            <td class="personal-tr"> 10<sup>th</sup>&nbsp;&nbsp;Ambe School</td>
+                        </tr>
+                        <tr>
+                            <td class="personal-th">College:</td>
+                            <td class="personal-tr">Dharamsinh Desai University</td>
+                        </tr>
+                        <tr>
+                            <td class="personal-th">Email:</td>
+                            <td class="personal-tr"  onclick="redirectToCompose()"><a href="mailto:deepakkushwaha1119@gmail.com">deepakkushwaha1119@gmail.com</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+            
+
+
+        </section>
+    <section id="Experience">
+        
+    </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="script.js"></script>
+  </body>
+
+</html>
+
+/* Javascript*/
+
+var typed = new Typed('#element', {
+    strings: ['Web Developer','Graphic Designer' ],
+    typeSpeed: 50,
+    backSpeed: 50,  
+    backDelay: 100,  
+    startDelay: 100,  
+    loop: true
+  }); 
+  
+/*About section*/
+  function redirectToCompose() { 
+    var email = 'deepakkushwaha1119@gmail.com';
+    window.location.href = 'mailto:' + email;
+}
+/* Skills section*/
+    // Arrays of programming languages and frameworks
+    const languages = [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Python",
+        "Java",
+        "C++",
+        "Ruby",
+        "Swift"
+  
+    ];
+
+    const frameworks = [
+        "React",
+        "Angular",
+        "Vue",
+        "Node.js",
+        "Express",
+        "Django",
+        "Ruby on Rails",
+        "Spring Boot"
+       
+    ];
+
+
+    function createListItems(category, items, radius) {
+        return items.map((item, index) => {
+            const angle = index * (360 / items.length);
+            const x = radius * Math.cos(angle * (Math.PI / 180));
+            const y = radius * Math.sin(angle * (Math.PI / 180));
+            return `<img src="${item}.png" alt="${item}" class="${category}-details" />`;
+        }).join('');
+    }
+
+
+    document.getElementById('skillsList').innerHTML = createListItems('languages', languages, 90) +
+        createListItems('frameworks', frameworks, 120);
+
+
+    function handleScroll() {
+        const skillsListItems = document.querySelectorAll('#skillsList img');
+
+        skillsListItems.forEach((item) => {
+            const category = item.classList.contains('languages-details') ? 'languages' : 'frameworks';
+            const radius = category === 'languages' ? 200 : 110;
+            const index = category === 'languages' ? Array.from(item.parentNode.children).indexOf(item) :
+                Array.from(document.querySelectorAll('.languages-details')).length +
+                Array.from(item.parentNode.children).indexOf(item);
+
+            const angle = index * (360 / (languages.length));
+            const x = radius * Math.cos(angle * (Math.PI / 180));
+            const y = radius * Math.sin(angle * (Math.PI / 180));
+
+            const skillsPosition = item.getBoundingClientRect().top;
+
+  
+            if (skillsPosition < window.innerHeight * 0.75) {
+                item.style.opacity = 1;
+                item.style.transform = `translate(${x}px, ${y}px) scale(1)`;
+                window.removeEventListener('scroll', handleScroll);
+            }
+        });
+    }
+
+    
+    window.addEventListener('scroll', handleScroll);
+
+
+
+/* Style*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    color: black;
+    background-color: white;
+    font-family: 'Poppins',sans-serif;
+}
+/* Body day and night effect*/
+
+
+/*Navbar*/
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav-sidebar{
+    height: 110px;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links ul{
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links ul li{
+    list-style: none;
+    color: black;
+    margin: 0 24px;
+}
+.nav-links ul li a{
+    text-decoration: none;
+    color: black;
+}
+.nav-links ul li a:hover{
+    color: rgb(104, 0, 104);
+}
+
+.logo{
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+
+/* frontpage desgin*/
+.frontpage{
+    display: flex;
+    justify-content: space-around;
+    margin: 80px 0;
+ 
+}
+.frontpage >div{
+    width: 30%;
+}
+/* Main Left Section*/
+.section-left{
+    font-size: 4rem;
+    margin: 30px 0;
+    color: grey;
+    border: rgb(53, 53, 53);
+    text-align: center;
+    font-weight: 550;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.section-left > div{
+    text-align: center;
+}
+.title{
+  
+      font-size: 4rem;
+        background: linear-gradient(to right, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc, #ff3399);
+        -webkit-background-clip: text;
+        color: transparent;
+        mix-blend-mode: multiply;
+        padding: 10px;
+        border-radius: 5px; 
+
+}
+#element{
+       font-size: 3.3rem;
+        background: linear-gradient(to right, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc, #ff3399);
+        -webkit-background-clip: text;
+        color: transparent;
+        mix-blend-mode: multiply;
+        padding: 10px;
+        border-radius: 5px;  
+}
+/* Main Resume and Social Icons Section*/
+.btn-container{
+display: flex;
+justify-content: center;
+gap: 1rem;
+}
+.btn-resume{
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 300ms ease;
+    padding: 1rem;
+    width: 8rem;
+    border-radius: 2rem;
+    border: rgb(53, 53, 53) 0.1rem solid;
+}
+.social-links{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+.icon{
+    cursor: pointer;
+    height: 2.8rem;
+}
+
+/* Main right Section*/
+.section-right{
+width: 40%;
+}
+.section-right img{
+    width: 80vh;
+    height: 80vh;
+    margin:-12vh -12vh;
+}
+
+
+/*About Me*/
+
+
+#about {
+    text-align: center;
+    padding: 15px;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    color: rgb(156, 156, 156);
+}
+
+h2 {  
+    display: flex;
+    justify-content: center;
+    font-weight: 550;
+    font-size: 2.6rem;
+    color: black;
+}
+p{
+    font-size: 25px;
+}
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.about-img {
+    width: 55vh;
+    height: 80vh;
+    margin-left: 5%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-top: -5vh;
+}
+
+.about-details-container {
+    width: calc(90% - 55vh);
+    margin-top: -15vh;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-details {
+    width: 90%;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.personal-info {
+    width: 100%;
+}
+
+table {
+    text-decoration: none;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+
+.personal-head{
+ font-size: xx-large;
+ font-weight: 600;
+}
+.personal-th{
+    font-weight: 600;
+    font-size: large;
+}
+.personal-tr{
+    display: flex;
+    font-size: 18px;
+    font-weight: 400;
+}
+/* Skills Section*/
