@@ -351,27 +351,27 @@ th {
    font-size: 13px; 
 }
 
-/* EXPERIENCE SECTION */
+/* Skills SECTION */
 
-#experience {
+#skills {
   position: relative;
   justify-content: center;
 }
-.experiance-containers{
-display: flex;
-justify-content: space-around;
+
+.article-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 1rem;
 }
 
-.experiance-container{
-display: flex;
+.article-icon {
+    max-width: 3.5rem;
+    max-height: 3.5rem;
+    width: auto;
+    height: auto; 
+    margin: 0.5rem
 }
-
-.experiance-details-container{
-  background: white;
-  border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
-  }
 
 /* PROJECTS SECTION */
 
@@ -399,6 +399,8 @@ display: flex;
   color: black;
   border-color: rgb(163, 163, 163);
 }
+
+
 
 /* CONTACT */
 
