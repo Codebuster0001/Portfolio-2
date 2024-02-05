@@ -15,6 +15,7 @@ function toggleMenu() {
     icon.classList.toggle("open");
   }
   
-
-// timeline
+// project
+  
+  
 
